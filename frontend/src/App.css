@@ -1,0 +1,41 @@
+body {
+
+  margin: 0;
+
+  background: #181818;
+
+  color: white;
+
+  font-family: Arial;
+
+}
+
+.container {
+
+  width: 700px;
+
+  margin: auto;
+
+  text-align: center;
+
+  padding-top: 40px;
+
+}
+
+canvas {
+
+  cursor: crosshair;
+
+}
+
+button {
+
+  padding: 12px;
+
+  margin: 10px;
+
+  width: 140px;
+
+  font-size: 18px;
+
+}
