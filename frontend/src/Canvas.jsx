@@ -53,8 +53,6 @@ function Canvas({ setDigit, setConfidence }) {
 
         if (!drawing.current) return;
 
-        console.log(e)
-
         const ctx = canvasRef.current.getContext("2d");
 
         const pos = getPosition(e);
@@ -95,7 +93,6 @@ function Canvas({ setDigit, setConfidence }) {
             const form = new FormData();
 
             form.append("file", blob, "digit.png");
-            console.log(blob)
             const response = await API.post(
                 "/predict",
                 form,
