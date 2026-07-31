@@ -1,1 +1,1 @@
-uvicorn app:app --reload
+.venv\Scripts\activate.bat&&uvicorn app:app --reload

@@ -14,11 +14,11 @@ function Canvas({ setDigit, setConfidence }) {
         const ctx = canvas.getContext("2d");
 
         // Black background
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "white";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // White pen
-        ctx.strokeStyle = "white";
+        ctx.strokeStyle = "black";
         ctx.lineWidth = 10;
         ctx.lineCap = "round";
         ctx.lineJoin = "round";
@@ -75,7 +75,7 @@ function Canvas({ setDigit, setConfidence }) {
 
         const ctx = canvas.getContext("2d");
 
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "white";
 
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
@@ -158,8 +158,8 @@ function Canvas({ setDigit, setConfidence }) {
                 onMouseLeave={stopDrawing}
 
                 style={{
-                    border: "2px solid white",
-                    background: "black",
+                    border: "2px solid black",
+                    background: "white",
                     cursor: "crosshair"
                 }}
             />
