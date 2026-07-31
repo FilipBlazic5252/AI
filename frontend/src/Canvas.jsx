@@ -116,7 +116,6 @@ function Canvas({ setDigit, setConfidence }) {
 
     const SaveFile = (e) => {
         setFile(e.target.files[0]);
-        console.log(typeof (e.target.files[0]))
         const imgFile = e.target.files[0];
         if (!imgFile) return;
         const img = new Image();
