@@ -80,7 +80,6 @@ optimizer = optim.Adam(
 for epoch in range(EPOCHS):
 
     model.train()
-
     running_loss = 0
 
     for images, labels in train_loader:

@@ -81,7 +81,6 @@ function Canvas({ setDigit, setConfidence }) {
 
         setDigit(null);
         setConfidence(null);
-
     };
 
     const predict = async () => {
@@ -115,30 +114,34 @@ function Canvas({ setDigit, setConfidence }) {
 
     const [uploadingFile, setFile] = useState(null);
 
-    const UploadFile = async (e) => {
-        const form = new FormData();
-        form.append("file", uploadingFile);
-
-        const response = await API.post(
-            "/predict",
-            form,
-            {
-                headers: {
-                    "Content-Type": "multipart/form-data"
-                }
-            }
-        );
-        setDigit(response.data.digit);
-
-        setConfidence(
-            response.data.confidence + "%"
-        );
-    }
     const SaveFile = (e) => {
         setFile(e.target.files[0]);
+        console.log(typeof (e.target.files[0]))
+        const imgFile = e.target.files[0];
+        if (!imgFile) return;
+        const img = new Image();
+        img.onload = () => {
+            const canvas = canvasRef.current;
+            const ctx = canvas.getContext("2d");
+
+            // Clear previous image
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw image
+            ctx.drawImage(
+                img,
+                0,
+                0,
+                canvas.width,
+                canvas.height
+            );
+        };
+        img.src = URL.createObjectURL(imgFile);
     }
     const handleChooseFile = () => {
+
         fileInputRef.current.click();
+
     };
     const fileInputRef = useRef(null);
     return (
@@ -163,7 +166,9 @@ function Canvas({ setDigit, setConfidence }) {
             />
 
             <br />
-
+            <button onClick={handleChooseFile}>
+                Select Image
+            </button>
             <button onClick={predict}>
                 Predict
             </button>
@@ -171,15 +176,11 @@ function Canvas({ setDigit, setConfidence }) {
             <button onClick={clearCanvas}>
                 Clear
             </button>
-            <div>
-                <input type="file" onChange={SaveFile} hidden
-                    ref={fileInputRef} />
-                <button onClick={handleChooseFile}>
-                    Select Image
-                </button>
-                <button onClick={UploadFile}>Upload</button>
 
-            </div>
+            <input type="file" onChange={SaveFile} hidden
+                ref={fileInputRef} />
+
+
         </>
 
     );
